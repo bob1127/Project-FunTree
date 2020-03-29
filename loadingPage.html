@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<style>
+	* {
+      font-family: 'Noto Sans JP', sans-serif;
+	  padding: 0px;
+	  margin: 0px;
+	  list-style: none;
+
+	}
+
+	html, body {
+	  width: 100%;
+	  height: 100%;
+	  background-color: #f4f4f4;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+
+	wrap {
+	  width: 100%;
+	  
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  position: relative;
+	}
+	wrap p {
+	  font-weight: bold;
+	  font-size: 150px;
+	  letter-spacing: 10px;
+	  color: #333;
+	}
+
+	.text {
+	  position: relative;
+	/*  max-width: 80%	*/
+	}
+	.text p{
+		letter-spacing: 25px;
+		animation: changeColor 4s linear infinite alternate;
+	}
+    
+
+    @keyframes changeColor {
+	  0% {
+	    color:rgb(79,114,108);
+	  }
+	  50%{
+       color:rgb(251,153,102);
+	  }
+	  100% {
+	   color:rgb(220,159,180);
+	  }
+	}
+	.ball {
+	  position: absolute;
+	  left: 31%;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  width: 24px;
+	  height: 24px;
+	  border-radius: 50%;
+	  color: white;
+	  animation: jump 0.7s cubic-bezier(0.5, 0.05, 1, 0.5) infinite alternate;
+	  z-index: 100;
+	}
+
+	@keyframes jump {
+	  0% {
+	    top: 0px;
+	    tranform: scaleY(1.5);
+	    background: #46DDE8;
+	  }
+	  100% {
+	    top: 50px;
+	    transform: scaleY(0.8);
+	    background: rgba(0, 0, 0, 0.5);
+	  }
+	}
+	.tree { 
+        position: absolute;
+        right:-50px;
+		width: 40px;
+        height: 40px;
+        background-color: #88FF94;
+        border-radius: 100%;
+        top:100px;
+        
+       
+       
+      }
+
+    .tree::before{
+    	content: "";
+    	display: block;
+    	position: absolute;
+    	top: -30px;
+        right:-20px;
+		width: 40px;
+        height: 40px;
+        background-color: #5D8562;
+        border-radius: 100%;
+        z-index: 99;
+        animation: appear 1s linear ;
+        animation-delay: 4s;
+        
+    }
+    .tree::after{
+    	content: "";
+    	display: block;
+    	position: absolute;
+        right:-40px;
+		width: 40px;
+        height: 40px;
+        background-color: #46E8CC;
+        border-radius: 100%;
+        animation: appear 1s linear ;
+        animation-delay: 3s;
+        
+    } 
+    @keyframes appear{
+        0%{
+        	opacity: 0;
+        	transform: scale(0.2);
+        }
+    	100%{
+    	   opacity: 1;	
+    	   transform: scale(1);
+    	}
+    }   
+    svg {
+		  width: 85px;
+	
+		  margin: 5px;
+		  position: absolute;
+		  right: -95px;
+		  top: 100px;
+		}
+
+		#pic01 {
+		 
+		  stroke-width: 3px;
+		  fill: #806037;
+		}
+    .bgc{
+    	overflow: hidden;
+    	width: 100%;	
+    	height: 700px;
+    	position: absolute;
+    	display: flex;
+    	justify-content: center;	
+    	-ms-align-items: center;
+    	align-items: center;
+    	opacity: 0.8;	
+    		
+    }
+    .bgc img{
+    	
+     position: absolute;
+     opacity: 0;
+     animation: changeImg 25s infinite
+    }  
+    .bgc #img01{
+   
+        width: 550px;	
+    }
+    .bgc #img02{
+        animation-delay: 5s;
+    	bottom: 100px;
+    }
+    .bgc #img03{
+        animation-delay: 10s;
+    	width: 600px;
+    	bottom: -170px;	
+    }
+    .bgc #img04{
+    	width: 650px;	
+        animation-delay: 15s;
+    		
+    }
+    .bgc #img05{
+        animation-delay: 20s;
+    	
+    }
+    @keyframes changeImg{
+    	10%{
+          opacity: 1
+    	}
+    	20%{
+          opacity: 1  
+    	}
+    	30%{
+          opacity: 0
+    	}
+    	40%{
+          transform: scale(1.1); 
+    	}
+    }
+    .anounce{
+    	position: absolute;	
+    	bottom: -300px;
+
+    }
+    .anounce p{
+    	font-size: 10px;
+    	letter-spacing: 2px;
+    	color: rgba(12,12,12,0.6);
+
+    }
+    .loading{
+       width: 100%;	
+       height: 5px;	
+       background-color: transparent;
+	   margin-top: 80px;
+	   border-radius: 4px;
+	   overflow: hidden;
+	   position: absolute;	
+	   top: -80px;
+    } 
+    .bar{
+    	width: 10%;	
+    	height: 100%;	
+    	background-color:#E55A54;
+    }   
+</style>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<wrap>
+      <div class="bgc">	
+        <img src="images/pexels-photo-3214975.gif" alt="" id="img01">
+        <img src="images/pexels-photo-1530259.gif" alt="" id="img02">
+        <img src="images/venice-church-gondola-italy-161101.gif" alt="" id="img03">
+        <img src="images/pexels-photo-208228.gif" alt="" id="img04">
+        <img src="images/senso-ji-temple-japan-kyoto-landmark-161251.gif" alt="" id="img05">
+      </div>		
+	  <div class="iocn"></div>
+	  <div class="text">
+	    <p>FunTree   </p>
+	    <div class="ball"> </div>
+	    <div class="tree"></div>
+	    <svg id="pic01" viewbox="-10 30 100 100">
+	    	<polygon points=" 62,107 42,49 22,107">	
+	  </div>
+	  
+	  <div class="anounce">	      	
+         <p>Copyright © 2012 FunTree Systems Incorporated. All rights reserved.</p>
+	  </div>
+    </wrap>
+    <div class="loading">	
+        <div class="bar">
+        	
+        </div>
+	</div>
+	<script>	
+       var percent = 0
+
+		var timer = setInterval(function(){
+		  $(".bar").css("width" , percent+ "%")
+		  percent+=0.25
+		  if (percent>100){
+		  $(".pageLoading").addClass("complete")
+		    clearInterval(timer)
+		    document.location.href ='japan.html'
+		  }
+		},30)
+	</script>
+</body>
+</html>
